@@ -1,0 +1,200 @@
+[
+    {
+        "model": "survivorapi.survivor",
+        "pk": 1,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Gabe",
+            "last_name": "Ortis",
+            "age": 26,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 2,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Teeny",
+            "last_name": "Chirichillo",
+            "age": 24,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 3,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Rome",
+            "last_name": "Cooney",
+            "age": 30,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 4,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Anika",
+            "last_name": "Dhar",
+            "age": 26,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 5,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Terran 'TK'",
+            "last_name": "Foster",
+            "age": 31,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 6,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Rachel",
+            "last_name": "Lamont",
+            "age": 34,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 7,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Jon",
+            "last_name": "Lovett",
+            "age": 42,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 8,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Kyle 'Kyle Rhen'",
+            "last_name": "Otswald",
+            "age": 31,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 9,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Kishan",
+            "last_name": "Patel",
+            "age": 28,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 10,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Sam",
+            "last_name": "Phalen",
+            "age": 24,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 11,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Andy",
+            "last_name": "Rueda",
+            "age": 31,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 12,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Sue",
+            "last_name": "Smey",
+            "age": 59,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 13,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Caroline",
+            "last_name": "Vidmar",
+            "age": 27,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 14,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Aysha",
+            "last_name": "Welch",
+            "age": 32,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 15,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Sierra",
+            "last_name": "Wright",
+            "age": 27,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 16,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Solomon 'Sol'",
+            "last_name": "Yi",
+            "age": 43,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 17,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Tiyana",
+            "last_name": "Hallums",
+            "age": 27,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 18,
+        "fields": {
+            "season_id": 1,
+            "first_name": "Genevieve",
+            "last_name": "Mushaluk",
+            "age": 33,
+            "img_url": ""
+        }
+    }
+]

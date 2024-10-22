@@ -1,0 +1,11 @@
+[
+    {
+        "model": "survivorapi.seasonlog",
+        "pk": 1,
+        "fields": {
+            "user_id": 3,
+            "season_id": 1,
+            "status": "active"
+        }
+    }
+]

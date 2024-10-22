@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class SurvivorLog(models.Model):
-    season_log = models.ForeignKey("SeasonLog", on_delete=models.CASCADE)
     survivor = models.ForeignKey("Survivor", on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)

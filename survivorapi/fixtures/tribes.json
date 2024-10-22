@@ -1,0 +1,32 @@
+[
+    {
+        "model": "survivorapi.tribe",
+        "pk": 1,
+        "fields": {
+            "season_id": 1,
+            "name": "Gata",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 2,
+        "fields": {
+            "season_id": 1,
+            "name": "Tuku",
+            "color": "blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 3,
+        "fields": {
+            "season_id": 1,
+            "name": "Lavo",
+            "color": "red",
+            "is_merge_tribe": false
+        }
+    }
+]
