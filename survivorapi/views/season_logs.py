@@ -40,7 +40,7 @@ class SeasonLogs(ViewSet):
 
         serialized_active_seasons = SeasonLogSerializer(active_seasons, many=True).data
         serialized_completed_seasons = SeasonLogSerializer(completed_seasons, many=True).data
-        serialized_inactive_seasons = SeasonLogSerializer(inactive_seasons, many=True).data
+        serialized_inactive_seasons = SeasonSerializer(inactive_seasons, many=True).data
 
         response_data = {
             "active": serialized_active_seasons,

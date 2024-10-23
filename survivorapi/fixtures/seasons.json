@@ -22,5 +22,17 @@
             "end_date": "2020-05-13",
             "location": "Fiji"
         }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 3,
+        "fields": {
+            "season_number": 1,
+            "name": "Borneo",
+            "is_current": false,
+            "start_date": "2000-05-31",
+            "end_date": "2000-08-23",
+            "location": "Malaysia"
+        }
     }
 ]
