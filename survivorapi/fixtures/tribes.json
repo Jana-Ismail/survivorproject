@@ -28,5 +28,595 @@
             "color": "red",
             "is_merge_tribe": false
         }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 4,
+        "fields": {
+            "season_id": 14,
+            "name": "Ika",
+            "color": "blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 5,
+        "fields": {
+            "season_id": 14,
+            "name": "Taku",
+            "color": "orange",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 6,
+        "fields": {
+            "season_id": 14,
+            "name": "Vati",
+            "color": "green",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 7,
+        "fields": {
+            "season_id": 14,
+            "name": "Kula Kula",
+            "color": "purple",
+            "is_merge_tribe": true
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 8,
+        "fields": {
+            "season_id": 13,
+            "name": "Luvu",
+            "color": "light blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 9,
+        "fields": {
+            "season_id": 13,
+            "name": "Ua",
+            "color": "light green",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 10,
+        "fields": {
+            "season_id": 13,
+            "name": "Yase",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 11,
+        "fields": {
+            "season_id": 13,
+            "name": "Viakana",
+            "color": "red",
+            "is_merge_tribe": true
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 12,
+        "fields": {
+            "season_id": 2,
+            "name": "Dakal",
+            "color": "red",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 13,
+        "fields": {
+            "season_id": 2,
+            "name": "Sele",
+            "color": "blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 14,
+        "fields": {
+            "season_id": 2,
+            "name": "Yara",
+            "color": "green",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 15,
+        "fields": {
+            "season_id": 2,
+            "name": "Koru",
+            "color": "black",
+            "is_merge_tribe": true
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 16,
+        "fields": {
+            "season_id": 15,
+            "name": "Baka",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 17,
+        "fields": {
+            "season_id": 15,
+            "name": "Coco",
+            "color": "blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 18,
+        "fields": {
+            "season_id": 15,
+            "name": "Vesi",
+            "color": "red",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 19,
+        "fields": {
+            "season_id": 15,
+            "name": "Gala",
+            "color": "light blue",
+            "is_merge_tribe": true
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 20,
+        "fields": {
+            "season_id": 16,
+            "name": "Ratu",
+            "color": "orange",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 21,
+        "fields": {
+            "season_id": 16,
+            "name": "Soka",
+            "color": "light green",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 22,
+        "fields": {
+            "season_id": 16,
+            "name": "Tika",
+            "color": "light purple",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 23,
+        "fields": {
+            "season_id": 16,
+            "name": "Va Va",
+            "color": "black",
+            "is_merge_tribe": true
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 24,
+        "fields": {
+            "season_id": 17,
+            "name": "Belo",
+            "color": "blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 25,
+        "fields": {
+            "season_id": 17,
+            "name": "Lulu",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 26,
+        "fields": {
+            "season_id": 17,
+            "name": "Reba",
+            "color": "red",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 27,
+        "fields": {
+            "season_id": 17,
+            "name": "Dakuwaqa",
+            "color": "orange",
+            "is_merge_tribe": true
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 28,
+        "fields": {
+            "season_id": 18,
+            "name": "Nami",
+            "color": "orange yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 29,
+        "fields": {
+            "season_id": 18,
+            "name": "Siga",
+            "color": "light green",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 30,
+        "fields": {
+            "season_id": 18,
+            "name": "Yanu",
+            "color": "purple",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 31,
+        "fields": {
+            "season_id": 18,
+            "name": "Nuinui",
+            "color": "red",
+            "is_merge_tribe": true
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 32,
+        "fields": {
+            "season_id": 3,
+            "name": "Pagong",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 33,
+        "fields": {
+            "season_id": 3,
+            "name": "Tagi",
+            "color": "orange",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 34,
+        "fields": {
+            "season_id": 3,
+            "name": "Rattana",
+            "color": "light green",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 35,
+        "fields": {
+            "season_id": 4,
+            "name": "Kucha",
+            "color": "blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 36,
+        "fields": {
+            "season_id": 4,
+            "name": "Ogakor",
+            "color": "yellow green",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 37,
+        "fields": {
+            "season_id": 4,
+            "name": "Barramundi",
+            "color": "orange",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 38,
+        "fields": {
+            "season_id": 5,
+            "name": "Boran",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 39,
+        "fields": {
+            "season_id": 5,
+            "name": "Samburu",
+            "color": "red",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 40,
+        "fields": {
+            "season_id": 5,
+            "name": "Mota Maji",
+            "color": "mint green",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 41,
+        "fields": {
+            "season_id": 6,
+            "name": "Maraamu",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 42,
+        "fields": {
+            "season_id": 6,
+            "name": "Rotu",
+            "color": "light blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 43,
+        "fields": {
+            "season_id": 6,
+            "name": "Soliantu",
+            "color": "red pink",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 44,
+        "fields": {
+            "season_id": 7,
+            "name": "Chuay Gahn",
+            "color": "orange",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 45,
+        "fields": {
+            "season_id": 7,
+            "name": "Sook Jai",
+            "color": "purple",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 46,
+        "fields": {
+            "season_id": 7,
+            "name": "Chuay Jai",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 47,
+        "fields": {
+            "season_id": 8,
+            "name": "Jaburu",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 48,
+        "fields": {
+            "season_id": 8,
+            "name": "Tambaqui",
+            "color": "blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 49,
+        "fields": {
+            "season_id": 8,
+            "name": "Jacaré",
+            "color": "orange",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 50,
+        "fields": {
+            "season_id": 9,
+            "name": "Drake",
+            "color": "light blue",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 51,
+        "fields": {
+            "season_id": 9,
+            "name": "Morgan",
+            "color": "orange",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 52,
+        "fields": {
+            "season_id": 9,
+            "name": "The Outcasts",
+            "color": "purple",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 53,
+        "fields": {
+            "season_id": 9,
+            "name": "Balboa",
+            "color": "black",
+            "is_merge_tribe": true
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 54,
+        "fields": {
+            "season_id": 10,
+            "name": "Chapera",
+            "color": "red",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 55,
+        "fields": {
+            "season_id": 10,
+            "name": "Mogo Mogo",
+            "color": "green",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 56,
+        "fields": {
+            "season_id": 10,
+            "name": "Saboga",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 57,
+        "fields": {
+            "season_id": 10,
+            "name": "Chaboga Mogo",
+            "color": "blue",
+            "is_merge_tribe": true
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 58,
+        "fields": {
+            "season_id": 11,
+            "name": "Lopevi",
+            "color": "red",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 59,
+        "fields": {
+            "season_id": 11,
+            "name": "Yasur",
+            "color": "yellow",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 60,
+        "fields": {
+            "season_id": 11,
+            "name": "Alinta",
+            "color": "orange",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 61,
+        "fields": {
+            "season_id": 12,
+            "name": "Koror",
+            "color": "brown",
+            "is_merge_tribe": false
+        }
+    },
+    {
+        "model": "survivorapi.tribe",
+        "pk": 62,
+        "fields": {
+            "season_id": 12,
+            "name": "Ulong",
+            "color": "dark blue",
+            "is_merge_tribe": false
+        }
     }
 ]
