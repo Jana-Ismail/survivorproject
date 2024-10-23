@@ -34,5 +34,185 @@
             "end_date": "2000-08-23",
             "location": "Malaysia"
         }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 4,
+        "fields": {
+            "season_number": 2,
+            "name": "The Australian Outback",
+            "is_current": false,
+            "start_date": "2000-10-23",
+            "end_date": "2000-12-03",
+            "location": "Australia"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 5,
+        "fields": {
+            "season_number": 3,
+            "name": "Africa",
+            "is_current": false,
+            "start_date": "2001-10-11",
+            "end_date": "2002-01-10",
+            "location": "Kenya"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 6,
+        "fields": {
+            "season_number": 4,
+            "name": "Marquesas",
+            "is_current": false,
+            "start_date": "2002-02-28",
+            "end_date": "2002-05-19",
+            "location": "French Polynesia"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 7,
+        "fields": {
+            "season_number": 5,
+            "name": "Thailand",
+            "is_current": false,
+            "start_date": "2002-09-19",
+            "end_date": "2002-12-19",
+            "location": "Thailand"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 8,
+        "fields": {
+            "season_number": 6,
+            "name": "The Amazon",
+            "is_current": false,
+            "start_date": "2003-02-13",
+            "end_date": "2003-05-11",
+            "location": "Brazil"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 9,
+        "fields": {
+            "season_number": 7,
+            "name": "Pearl Islands",
+            "is_current": false,
+            "start_date": "2003-09-18",
+            "end_date": "2003-12-14",
+            "location": "Panama"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 10,
+        "fields": {
+            "season_number": 8,
+            "name": "All-Stars",
+            "is_current": false,
+            "start_date": "2004-02-01",
+            "end_date": "2004-05-09",
+            "location": "Panama"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 11,
+        "fields": {
+            "season_number": 9,
+            "name": "Vanuatu",
+            "is_current": false,
+            "start_date": "2004-09-16",
+            "end_date": "2004-12-12",
+            "location": "Vanuatu"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 12,
+        "fields": {
+            "season_number": 10,
+            "name": "Palau",
+            "is_current": false,
+            "start_date": "2005-02-17",
+            "end_date": "2005-05-15",
+            "location": "Palau"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 13,
+        "fields": {
+            "season_number": 41,
+            "name": "Survivor 41",
+            "is_current": false,
+            "start_date": "2021-09-22",
+            "end_date": "2021-12-15",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 14,
+        "fields": {
+            "season_number": 42,
+            "name": "Survivor 42",
+            "is_current": false,
+            "start_date": "2022-03-09",
+            "end_date": "2022-05-25",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 15,
+        "fields": {
+            "season_number": 43,
+            "name": "Survivor 43",
+            "is_current": false,
+            "start_date": "2022-09-21",
+            "end_date": "2022-12-14",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 16,
+        "fields": {
+            "season_number": 44,
+            "name": "Survivor 44",
+            "is_current": false,
+            "start_date": "2023-03-01",
+            "end_date": "2023-05-24",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 17,
+        "fields": {
+            "season_number": 45,
+            "name": "Survivor 45",
+            "is_current": false,
+            "start_date": "2023-09-05",
+            "end_date": "2023-12-20",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 18,
+        "fields": {
+            "season_number": 46,
+            "name": "Survivor 46",
+            "is_current": false,
+            "start_date": "2024-02-28",
+            "end_date": "2024-05-22",
+            "location": "Fiji"
+        }
     }
 ]
