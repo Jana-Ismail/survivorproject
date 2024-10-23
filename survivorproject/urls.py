@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from survivorapi.views import login_user, register_user, SeasonLogs
+from survivorapi.views import login_user, register_user, SeasonLogs, Seasons
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r"season-logs", SeasonLogs, "season-log")
+router.register(r"seasons", Seasons, "season")
 
 urlpatterns = [
     path('', include(router.urls)),
