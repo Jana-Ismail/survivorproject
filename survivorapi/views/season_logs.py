@@ -2,6 +2,7 @@
 
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
+from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
@@ -22,7 +23,7 @@ class SeasonLogSerializer(serializers.ModelSerializer):
         model = SeasonLog
         fields = ['id', 'status', 'season']
 
-class SeasonLogs(ViewSet):
+class SeasonLogs(viewsets.ModelViewSet):
     """
     ViewSet for handling season-related operations for users
     """
@@ -49,11 +50,6 @@ class SeasonLogs(ViewSet):
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
-
-    def retrieve(self, request, pk=None):
-        """Handle GET requests for a single season log"""
-        # Do I even need a retrieve method for season_logs? Hmm
-        pass
 
     def create(self, request):
         """Handle POST operations for creating a new season log"""
