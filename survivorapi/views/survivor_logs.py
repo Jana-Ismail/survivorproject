@@ -22,15 +22,3 @@ class SurvivorLogs(viewsets.ModelViewSet):
     queryset = SurvivorLog.objects.get()
     serializer_class = SurvivorLogSerializer
     permission_classes = permissions.IsAuthenticated
-
-# [
-#     {
-#         "model": "survivorapi.seasonlog",
-#         "pk": 2,
-#         "fields": {
-#             "user_id": 3,
-#             "season_id": 1,
-#             "status": "active"
-#         }
-#     }
-# ]

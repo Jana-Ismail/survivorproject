@@ -82,6 +82,7 @@ class SeasonLogs(viewsets.ModelViewSet):
                     SurvivorLog(
                         survivor=survivor,
                         user=user,
+                        season_log = season_log,
                         is_active=True,
                         is_juror=False,
                         is_user_winner_pick=False,
@@ -122,3 +123,4 @@ class SeasonLogs(viewsets.ModelViewSet):
         
         except Exception as ex:
             return Response({"message": ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
