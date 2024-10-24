@@ -6,3 +6,8 @@ class Survivor(models.Model):
     last_name = models.CharField(max_length=100)
     age = models.IntegerField()
     img_url = models.URLField(null=True, blank=True)
+    tribes = models.ManyToManyField(
+        "Survivor",
+        through="SurvivorTribe",
+        related_name="survivors"
+    )
