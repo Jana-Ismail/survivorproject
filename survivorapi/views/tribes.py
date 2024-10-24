@@ -34,7 +34,7 @@ class Tribes(viewsets.ModelViewSet):
             permission_classes = [permissions.IsAdminUser]
         return [permission() for permission in permission_classes]
     
-    def create(self, request):
+    def create(self, request, *args, **kwargs):
         """Method for admin user to create a tribe instance"""
         
         season_id = request.data["season_id"]
