@@ -15,16 +15,17 @@ class SeasonSerializer(serializers.ModelSerializer):
         ]
 
 class Seasons(viewsets.ModelViewSet):
-    # Will need to ultimately make permission classes only admin to manage the season instances themselves
     """
     A ViewSet for viewing, creating, deleting, and updating Season instances.
 
     Provides default implementations for:
     - list (GET)
-    - create (POST)
     - retrieve (GET detail)
     - update (PUT)
     - destroy (DELETE)
+
+    Provides custom implementations for:
+    - create (POST)
 
     admin user data:
         user info:
