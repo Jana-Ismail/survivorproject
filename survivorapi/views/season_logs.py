@@ -1,12 +1,10 @@
 """View module for handling requests about Season Logs"""
-
-from django.http import HttpResponseServerError
-from rest_framework.viewsets import ViewSet
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from survivorapi.models import SeasonLog, Season
+from django.db import transaction
+from survivorapi.models import SeasonLog, Season, Survivor, SurvivorLog
 
 class SeasonSerializer(serializers.ModelSerializer):
     class Meta:
@@ -67,11 +65,34 @@ class SeasonLogs(viewsets.ModelViewSet):
                     status=status.HTTP_400_BAD_REQUEST
                 )
 
-            season_log = SeasonLog()
-            season_log.user = request.auth.user
-            season_log.season = season
-            season_log.status = "active"
-            season_log.save()
+            # Use transaction to ensure all-or-nothing creation of logs
+            with transaction.atomic():
+                # Create season log
+                season_log = SeasonLog.objects.create(
+                    user=user,
+                    season=season,
+                    status="active"
+                )
+
+                # Get all survivors for this season
+                season_survivors = Survivor.objects.filter(season=season)
+
+                # Create survivor logs for each survivor
+                survivor_logs = [
+                    SurvivorLog(
+                        survivor=survivor,
+                        user=user,
+                        season_log = season_log,
+                        is_active=True,
+                        is_juror=False,
+                        is_user_winner_pick=False,
+                        episode_voted_out=None,
+                        is_season_winner=False
+                    ) for survivor in season_survivors
+                ]
+
+                # Bulk create all survivor logs
+                SurvivorLog.objects.bulk_create(survivor_logs)
                 
             serializer = SeasonLogSerializer(season_log)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -83,8 +104,18 @@ class SeasonLogs(viewsets.ModelViewSet):
         """Handle DELETE operations for removing a season log"""
         
         try:
-            season_log = SeasonLog.objects.get(pk=pk)
-            season_log.delete()
+            with transaction.atomic():
+                season_log = Season.objects.get(pk=pk)
+
+                # Delete related survivor logs first
+                SurvivorLog.objects.filter(
+                    user=request.auth.user,
+                    survivor__season=season_log.season
+                ).delete()
+
+                # Then delete the season log
+                season_log.delete()
+
             return Response(None, status=status.HTTP_204_NO_CONTENT)
 
         except SeasonLog.DoesNotExist:
@@ -92,3 +123,4 @@ class SeasonLogs(viewsets.ModelViewSet):
         
         except Exception as ex:
             return Response({"message": ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

@@ -142,5 +142,221 @@
             "tribe_id": 3,
             "survivor_id": 18
         }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 19,
+        "fields": {
+            "tribe_id": 56,
+            "survivor_id": 19
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 20,
+        "fields": {
+            "tribe_id": 56,
+            "survivor_id": 20
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 21,
+        "fields": {
+            "tribe_id": 56,
+            "survivor_id": 21
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 22,
+        "fields": {
+            "tribe_id": 56,
+            "survivor_id": 22
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 23,
+        "fields": {
+            "tribe_id": 56,
+            "survivor_id": 23
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 24,
+        "fields": {
+            "tribe_id": 56,
+            "survivor_id": 24
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 25,
+        "fields": {
+            "tribe_id": 55,
+            "survivor_id": 25
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 26,
+        "fields": {
+            "tribe_id": 55,
+            "survivor_id": 26
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 27,
+        "fields": {
+            "tribe_id": 55,
+            "survivor_id": 27
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 28,
+        "fields": {
+            "tribe_id": 55,
+            "survivor_id": 28
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 29,
+        "fields": {
+            "tribe_id": 55,
+            "survivor_id": 29
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 30,
+        "fields": {
+            "tribe_id": 55,
+            "survivor_id": 30
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 31,
+        "fields": {
+            "tribe_id": 54,
+            "survivor_id": 31
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 32,
+        "fields": {
+            "tribe_id": 54,
+            "survivor_id": 32
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 33,
+        "fields": {
+            "tribe_id": 54,
+            "survivor_id": 33
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 34,
+        "fields": {
+            "tribe_id": 54,
+            "survivor_id": 34
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 35,
+        "fields": {
+            "tribe_id": 54,
+            "survivor_id": 35
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 36,
+        "fields": {
+            "tribe_id": 54,
+            "survivor_id": 36
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 37,
+        "fields": {
+            "tribe_id": 57,
+            "survivor_id": 28
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 38,
+        "fields": {
+            "tribe_id": 57,
+            "survivor_id": 29
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 39,
+        "fields": {
+            "tribe_id": 57,
+            "survivor_id": 30
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 40,
+        "fields": {
+            "tribe_id": 57,
+            "survivor_id": 33
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 41,
+        "fields": {
+            "tribe_id": 57,
+            "survivor_id": 34
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 42,
+        "fields": {
+            "tribe_id": 57,
+            "survivor_id": 35
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 43,
+        "fields": {
+            "tribe_id": 57,
+            "survivor_id": 36
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 44,
+        "fields": {
+            "tribe_id": 57,
+            "survivor_id": 23
+        }
+    },
+    {
+        "model": "survivorapi.survivortribe",
+        "pk": 45,
+        "fields": {
+            "tribe_id": 57,
+            "survivor_id": 24
+        }
     }
 ]

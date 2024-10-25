@@ -196,5 +196,203 @@
             "age": 33,
             "img_url": ""
         }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 19,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Tina",
+            "last_name": "Wesson",
+            "age": 42,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 20,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Rudy",
+            "last_name": "Boesch",
+            "age": 75,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 21,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Ethan",
+            "last_name": "Zohn",
+            "age": 29,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 22,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Jerri",
+            "last_name": "Manthey",
+            "age": 33,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 23,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Rupert",
+            "last_name": "Boneham",
+            "age": 39,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 24,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Jenna",
+            "last_name": "Lewis",
+            "age": 33,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 25,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Jenna",
+            "last_name": "Morasca",
+            "age": 22,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 26,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Richard",
+            "last_name": "Hatch",
+            "age": 42,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 27,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Colby",
+            "last_name": "Donaldson",
+            "age": 29,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 28,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Lex",
+            "last_name": "van den Berghe",
+            "age": 40,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 29,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Kathy",
+            "last_name": "Vavrick-O'Brien",
+            "age": 48,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 30,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Shii Ann",
+            "last_name": "Huang",
+            "age": 29,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 31,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Rob",
+            "last_name": "Cesternino",
+            "age": 25,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 32,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Susan",
+            "last_name": "Hawk",
+            "age": 42,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 33,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Alicia",
+            "last_name": "Calaway",
+            "age": 35,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 34,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Tom",
+            "last_name": "Buchanan",
+            "age": 48,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 35,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Rob",
+            "last_name": "Mariano",
+            "age": 27,
+            "img_url": ""
+        }
+    },
+    {
+        "model": "survivorapi.survivor",
+        "pk": 36,
+        "fields": {
+            "season_id": 10,
+            "first_name": "Amber",
+            "last_name": "Brkich",
+            "age": 25,
+            "img_url": ""
+        }
     }
 ]
