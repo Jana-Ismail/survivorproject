@@ -12,13 +12,13 @@ class SurvivorSerializer(serializers.ModelSerializer):
 class SurvivorLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = SurvivorLog
-        fields = ['is_active', 'is_juror', 'episode_voted_out', 'is']
+        fields = ['id', 'is_active', 'is_juror', 'episode_voted_out', 'season_log_id', 'is_user_winner_pick', 'is_season_winner']
 
 class SurvivorLogs(viewsets.ModelViewSet):
     """
     ViewSet for viewing and updating survivor logs in an active season log
     """
 
-    queryset = SurvivorLog.objects.get()
+    queryset = SurvivorLog.objects.all()
     serializer_class = SurvivorLogSerializer
-    permission_classes = permissions.IsAuthenticated
+    permission_classes = [permissions.IsAuthenticated]
