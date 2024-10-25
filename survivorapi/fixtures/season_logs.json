@@ -3,7 +3,7 @@
         "model": "survivorapi.seasonlog",
         "pk": 1,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "season_id": 1,
             "status": "active"
         }

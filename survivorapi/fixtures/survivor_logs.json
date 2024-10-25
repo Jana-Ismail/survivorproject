@@ -3,7 +3,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 1,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 1,
             "season_log_id": 1,
             "is_active": true,
@@ -17,7 +17,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 2,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 2,
             "season_log_id": 1,
             "is_active": true,
@@ -31,7 +31,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 3,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 3,
             "season_log_id": 1,
             "is_active": true,
@@ -45,7 +45,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 4,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 4,
             "season_log_id": 1,
             "is_active": true,
@@ -59,7 +59,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 5,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 5,
             "season_log_id": 1,
             "is_active": true,
@@ -73,7 +73,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 6,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 6,
             "season_log_id": 1,
             "is_active": true,
@@ -87,7 +87,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 7,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 7,
             "season_log_id": 1,
             "is_active": true,
@@ -101,7 +101,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 8,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 8,
             "season_log_id": 1,
             "is_active": true,
@@ -115,7 +115,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 9,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 9,
             "season_log_id": 1,
             "is_active": true,
@@ -129,7 +129,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 10,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 10,
             "season_log_id": 1,
             "is_active": true,
@@ -143,7 +143,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 11,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 11,
             "season_log_id": 1,
             "is_active": true,
@@ -157,7 +157,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 12,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 12,
             "season_log_id": 1,
             "is_active": true,
@@ -171,7 +171,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 13,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 13,
             "season_log_id": 1,
             "is_active": true,
@@ -185,7 +185,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 14,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 14,
             "season_log_id": 1,
             "is_active": true,
@@ -199,7 +199,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 15,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 15,
             "season_log_id": 1,
             "is_active": true,
@@ -213,7 +213,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 16,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 16,
             "season_log_id": 1,
             "is_active": true,
@@ -227,7 +227,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 17,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 17,
             "season_log_id": 1,
             "is_active": true,
@@ -241,7 +241,7 @@
         "model": "survivorapi.survivorlog",
         "pk": 18,
         "fields": {
-            "user_id": 3,
+            "user_id": 6,
             "survivor_id": 18,
             "season_log_id": 1,
             "is_active": true,
