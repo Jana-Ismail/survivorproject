@@ -5,3 +5,4 @@ from .tribes import Tribes
 from .survivors import Survivors
 from .survivor_tribes import SurvivorTribes
 from .survivor_logs import SurvivorLogs
+from .survivor_notes import SurvivorNotes
