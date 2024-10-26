@@ -39,7 +39,7 @@ class FavoriteSurvivorSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = FavoriteSurvivor
-        fields = ['survivor_log']
+        fields = ['id', 'survivor_log']
 
 class SeasonLogs(viewsets.ModelViewSet):
     """
@@ -166,8 +166,11 @@ class SeasonLogs(viewsets.ModelViewSet):
         elif request.method == 'PUT':
             pass
 
-    @action(detail=True, methods=['get', 'post', 'delete'], url_path='survivors/favorites')
-    def favorite_survivors(self, request, pk=None):
+    @action(detail=True, methods=['get', 'post', 'delete'], url_path='survivors/favorites/(?P<favorite_pk>[^/.]+)?')
+    def favorite_survivors(self, request, pk=None, favorite_pk=None):
+        """
+        Handle favorite survivors for a season log
+        """
         season_log = self.get_object()
 
         if request.method == 'GET':
@@ -179,28 +182,61 @@ class SeasonLogs(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
         
         elif request.method == 'POST':
-            survivor_log_id = request.data["survivor_log_id"]
+            survivor_log_id = request.data.get("survivor_log_id")
+
+            if not survivor_log_id:
+                return Response(
+                    {"message": "survivor_log_id is required"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
             try:
+                # Verify the survivor_log exists and belongs to this season_log
                 survivor_log = SurvivorLog.objects.get(
                     pk=survivor_log_id,
                     season_log=season_log,
                     user=request.auth.user
                 )
+
+                # Check if already a favorite
+                existing_favorite = FavoriteSurvivor.objects.filter(
+                    survivor_log=survivor_log
+                ).first()
+
+                if existing_favorite:
+                    return Response(
+                        {"message": "This survivor is already a favorite"},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+                
                 favorite = FavoriteSurvivor.objects.create(
                     survivor_log=survivor_log
                 )
+
                 serializer = FavoriteSurvivorSerializer(favorite)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
+            
+            except SurvivorLog.DoesNotExist:
+                return Response(
+                    {"message": "Invalid survivor_log_id"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
             except Exception as ex:
                 return Response(
                     {"reason": ex.args[0]}, 
                     status=status.HTTP_400_BAD_REQUEST
                 )
         elif request.method == 'DELETE':
-            favorite_survivor_id = request.data.get("favorite_id")
+            if not favorite_pk:
+                return Response(
+                    {"message": "Favorite ID is required"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
             try:
                 favorite = FavoriteSurvivor.objects.get(
-                    pk=favorite_survivor_id,
+                    pk=favorite_pk,
                     survivor_log__season_log=season_log,
                     survivor_log__user=request.auth.user
                 )
