@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from survivorapi.views import login_user, register_user, SeasonLogs, Seasons, Tribes, Survivors, SurvivorTribes, SurvivorLogs, SurvivorNotes
+from survivorapi.views import login_user, register_user, SeasonLogs, Seasons, Tribes, Survivors, SurvivorTribes, SurvivorLogs, SurvivorNotes, FavoriteSurvivors
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r"season-logs", SeasonLogs, "season-log")
@@ -11,6 +11,7 @@ router.register(r"survivors", Survivors, "survivor")
 router.register(r"survivor-tribes", SurvivorTribes, "survivor-tribes")
 router.register(r"survivor-logs", SurvivorLogs, "survivor-log")
 router.register(r"survivor-notes", SurvivorNotes, "survivor-note")
+router.register(r"favorite-survivors", FavoriteSurvivors, "favorite-survivor")
 
 urlpatterns = [
     path('', include(router.urls)),

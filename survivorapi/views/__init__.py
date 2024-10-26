@@ -6,3 +6,4 @@ from .survivors import Survivors
 from .survivor_tribes import SurvivorTribes
 from .survivor_logs import SurvivorLogs
 from .survivor_notes import SurvivorNotes
+from .favorite_survivors import FavoriteSurvivors
