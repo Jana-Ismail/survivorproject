@@ -1,10 +1,11 @@
 """View module for handling requests about Season Logs"""
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework.response import Response
+from rest_framework.decorators import action
 from rest_framework import serializers
 from rest_framework import status
 from django.db import transaction
-from survivorapi.models import SeasonLog, Season, Survivor, SurvivorLog
+from survivorapi.models import SeasonLog, Season, Survivor, SurvivorLog, FavoriteSurvivor
 
 class SeasonSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,11 +22,39 @@ class SeasonLogSerializer(serializers.ModelSerializer):
         model = SeasonLog
         fields = ['id', 'status', 'season']
 
+class SurvivorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Survivor
+        fields = ['id', 'first_name', 'last_name', 'age', 'img_url']
+
+class SurvivorLogSerializer(serializers.ModelSerializer):
+    survivor = SurvivorSerializer(many=False)
+
+    class Meta:
+        model = SurvivorLog
+        fields = ['id', 'survivor', 'is_active', 'is_juror', 'episode_voted_out', 'is_user_winner_pick', 'is_season_winner']
+
+class FavoriteSurvivorSerializer(serializers.ModelSerializer):
+    survivor_log = SurvivorLogSerializer(many=False)
+    
+    class Meta:
+        model = FavoriteSurvivor
+        fields = ['survivor_log']
+
 class SeasonLogs(viewsets.ModelViewSet):
     """
     ViewSet for handling season-related operations for users
     """
 
+    serializer_class = SeasonLogSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        """
+        This method is used by retrieve, update, and destroy actions
+        """
+        return SeasonLog.objects.filter(user=self.request.auth.user)
+    
     def list(self, request):
         user = request.auth.user
 
@@ -124,3 +153,61 @@ class SeasonLogs(viewsets.ModelViewSet):
         except Exception as ex:
             return Response({"message": ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @action(detail=True, methods=['get', 'put'], url_path="survivors")
+    def survivor_logs(self, request, pk=None):
+        season_log = self.get_object()
+        if request.method == 'GET':
+            survivor_logs = SurvivorLog.objects.filter(season_log=season_log)
+            serializer = SurvivorLogSerializer(survivor_logs, many=True)
+            return Response(serializer.data)
+        
+        # Need to add logic for updating survivor-logs
+        # But also this logic might exist in other methods, like the episode_log method
+        elif request.method == 'PUT':
+            pass
+
+    @action(detail=True, methods=['get', 'post', 'delete'], url_path='survivors/favorites')
+    def favorite_survivors(self, request, pk=None):
+        season_log = self.get_object()
+
+        if request.method == 'GET':
+            favorites = FavoriteSurvivor.objects.filter(
+                survivor_log__season_log=season_log,
+                survivor_log__user=request.auth.user
+            )
+            serializer = FavoriteSurvivorSerializer(favorites, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        elif request.method == 'POST':
+            survivor_log_id = request.data["survivor_log_id"]
+            try:
+                survivor_log = SurvivorLog.objects.get(
+                    pk=survivor_log_id,
+                    season_log=season_log,
+                    user=request.auth.user
+                )
+                favorite = FavoriteSurvivor.objects.create(
+                    survivor_log=survivor_log
+                )
+                serializer = FavoriteSurvivorSerializer(favorite)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            except Exception as ex:
+                return Response(
+                    {"reason": ex.args[0]}, 
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+        elif request.method == 'DELETE':
+            favorite_survivor_id = request.data.get("favorite_id")
+            try:
+                favorite = FavoriteSurvivor.objects.get(
+                    pk=favorite_survivor_id,
+                    survivor_log__season_log=season_log,
+                    survivor_log__user=request.auth.user
+                )
+                favorite.delete()
+                return Response(status=status.HTTP_204_NO_CONTENT)
+            except FavoriteSurvivor.DoesNotExist:
+                return Response(
+                    {"message": "Favorite not found"},
+                    status=status.HTTP_404_NOT_FOUND
+                )
