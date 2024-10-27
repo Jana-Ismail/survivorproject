@@ -166,7 +166,7 @@ class SeasonLogs(viewsets.ModelViewSet):
         elif request.method == 'PUT':
             pass
 
-    @action(detail=True, methods=['get', 'post', 'delete'], url_path='survivors/favorites/(?P<favorite_pk>[^/.]+)?')
+    @action(detail=True, methods=['get', 'post'], url_path='survivors/favorites')
     def favorite_survivors(self, request, pk=None, favorite_pk=None):
         """
         Handle favorite survivors for a season log
@@ -227,23 +227,21 @@ class SeasonLogs(viewsets.ModelViewSet):
                     {"reason": ex.args[0]}, 
                     status=status.HTTP_400_BAD_REQUEST
                 )
-        elif request.method == 'DELETE':
-            if not favorite_pk:
-                return Response(
-                    {"message": "Favorite ID is required"},
-                    status=status.HTTP_400_BAD_REQUEST
-                )
-            
-            try:
-                favorite = FavoriteSurvivor.objects.get(
-                    pk=favorite_pk,
-                    survivor_log__season_log=season_log,
-                    survivor_log__user=request.auth.user
-                )
-                favorite.delete()
-                return Response(status=status.HTTP_204_NO_CONTENT)
-            except FavoriteSurvivor.DoesNotExist:
-                return Response(
-                    {"message": "Favorite not found"},
-                    status=status.HTTP_404_NOT_FOUND
-                )
+    @action(detail=True, methods=['delete'], url_path='survivors/favorites/(?P<favorite_pk>[^/.]+)?')
+    def delete_favorites(self, request, pk=None, favorite_pk=None):
+        """Handle DELETE for a specific favorite"""
+
+        season_log = self.get_object()
+        try:
+            favorite = FavoriteSurvivor.objects.get(
+                pk=favorite_pk,
+                survivor_log__season_log=season_log,
+                survivor_log__user=request.auth.user
+            )
+            favorite.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except FavoriteSurvivor.DoesNotExist:
+            return Response(
+                {"message": "Favorite not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
