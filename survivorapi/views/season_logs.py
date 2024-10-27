@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 from rest_framework import serializers
 from rest_framework import status
 from django.db import transaction
-from survivorapi.models import SeasonLog, Season, Survivor, SurvivorLog, FavoriteSurvivor
+from survivorapi.models import SeasonLog, Season, Survivor, SurvivorLog, FavoriteSurvivor, SurvivorNote
 
 class SeasonSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,7 +39,12 @@ class FavoriteSurvivorSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = FavoriteSurvivor
-        fields = ['id', 'survivor_log']
+        fields = ['id']
+
+class SurvivorNoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SurvivorNote
+        fields = ['id', 'text']
 
 class SeasonLogs(viewsets.ModelViewSet):
     """
@@ -134,13 +139,10 @@ class SeasonLogs(viewsets.ModelViewSet):
         
         try:
             with transaction.atomic():
-                season_log = Season.objects.get(pk=pk)
+                season_log = self.get_object()
 
                 # Delete related survivor logs first
-                SurvivorLog.objects.filter(
-                    user=request.auth.user,
-                    survivor__season=season_log.season
-                ).delete()
+                SurvivorLog.objects.filter(season_log=season_log).delete()
 
                 # Then delete the season log
                 season_log.delete()
@@ -245,3 +247,48 @@ class SeasonLogs(viewsets.ModelViewSet):
                 {"message": "Favorite not found"},
                 status=status.HTTP_404_NOT_FOUND
             )
+    @action(detail=True, methods=['get', 'post'], url_path="survivors/(?P<survivor_log_pk>[^/.]+)/notes")
+    def survivor_notes(self, request, pk=None, survivor_log_pk=None):
+        season_log = self.get_object()
+        
+        if request.method == 'GET':
+            try:
+                survivor_log = SurvivorLog.objects.get(
+                    pk=survivor_log_pk,
+                    season_log=season_log,
+                    user=request.auth.user
+                )
+                notes = SurvivorNote.objects.filter(survivor_log=survivor_log)
+                serializer = SurvivorNoteSerializer(notes, many=True)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            except SurvivorLog.DoesNotExist:
+                return Response(
+                    {"message": "Survivor log not found"}, 
+                    status=status.HTTP_404_NOT_FOUND
+                )
+        elif request.method == 'POST':
+            try:
+                # Verify the survivor_log exists and belongs to this season_log
+                survivor_log = SurvivorLog.objects.get(
+                    pk=survivor_log_pk,
+                    season_log=season_log,
+                    user=request.auth.user
+                )
+
+                # Check if text is provided so no resource is created without text data
+                text = request.data["text"]
+                if not text:
+                    return Response(
+                        {"message": "Text is required for the note"},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+                
+                note = SurvivorNote.objects.create(
+                    survivor_log=survivor_log,
+                    text = text
+                )
+
+                serializer = SurvivorNoteSerializer(note)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            except Exception as ex:
+                return Response({"reason": ex.args[0]}, status=status.HTTP_400_BAD_REQUEST)

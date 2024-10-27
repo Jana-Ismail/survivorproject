@@ -9,8 +9,6 @@ router.register(r"seasons", Seasons, "season")
 router.register(r"tribes", Tribes, "tribe")
 router.register(r"survivors", Survivors, "survivor")
 router.register(r"survivor-tribes", SurvivorTribes, "survivor-tribes")
-router.register(r"survivor-notes", SurvivorNotes, "survivor-note")
-
 urlpatterns = [
     path('', include(router.urls)),
     path('register', register_user),
