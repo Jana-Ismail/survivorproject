@@ -155,13 +155,28 @@ class SeasonLogs(viewsets.ModelViewSet):
         except Exception as ex:
             return Response({"message": ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    @action(detail=True, methods=['get', 'put'], url_path="survivors")
-    def survivor_logs(self, request, pk=None):
+    @action(detail=True, methods=['get', 'put'], url_path="survivors/(?P<survivor_log_pk>[^/.]+)?")
+    def survivor_logs(self, request, pk=None, survivor_log_pk=None):
         season_log = self.get_object()
+
         if request.method == 'GET':
-            survivor_logs = SurvivorLog.objects.filter(season_log=season_log)
-            serializer = SurvivorLogSerializer(survivor_logs, many=True)
-            return Response(serializer.data)
+            if survivor_log_pk:
+                try:
+                    survivor_log = SurvivorLog.objects.get(
+                        pk=survivor_log_pk,
+                        season_log=season_log
+                    )
+                    serializer = SurvivorLogSerializer(survivor_log)
+                    return Response(serializer.data)
+                except SurvivorLog.DoesNotExist:
+                    return Response(
+                        {"message": "Survivor log not found"},
+                        status=status.HTTP_404_NOT_FOUND
+                    )
+            else:
+                survivor_logs = SurvivorLog.objects.filter(season_log=season_log)
+                serializer = SurvivorLogSerializer(survivor_logs, many=True)
+                return Response(serializer.data)
         
         # Need to add logic for updating survivor-logs
         # But also this logic might exist in other methods, like the episode_log method
@@ -247,8 +262,9 @@ class SeasonLogs(viewsets.ModelViewSet):
                 {"message": "Favorite not found"},
                 status=status.HTTP_404_NOT_FOUND
             )
+        
     @action(detail=True, methods=['get', 'post'], url_path="survivors/(?P<survivor_log_pk>[^/.]+)/notes")
-    def survivor_notes(self, request, pk=None, survivor_log_pk=None):
+    def view_or_create_note(self, request, pk=None, survivor_log_pk=None):
         season_log = self.get_object()
         
         if request.method == 'GET':
@@ -276,7 +292,7 @@ class SeasonLogs(viewsets.ModelViewSet):
                 )
 
                 # Check if text is provided so no resource is created without text data
-                text = request.data["text"]
+                text = request.data.get("text")
                 if not text:
                     return Response(
                         {"message": "Text is required for the note"},
@@ -285,10 +301,74 @@ class SeasonLogs(viewsets.ModelViewSet):
                 
                 note = SurvivorNote.objects.create(
                     survivor_log=survivor_log,
-                    text = text
+                    text=text
                 )
 
                 serializer = SurvivorNoteSerializer(note)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             except Exception as ex:
                 return Response({"reason": ex.args[0]}, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=True, methods=['put', 'delete'], url_path="survivors/(?P<survivor_log_pk>[^/.]+)/notes/(?P<note_pk>[^/.]+)")
+    def update_or_delete_note(self, request, pk=None, survivor_log_pk=None, note_pk=None):
+        season_log = self.get_object()
+
+        if request.method == 'PUT':
+            try:
+                survivor_log = SurvivorLog.objects.get(
+                    pk=survivor_log_pk,
+                    season_log=season_log,
+                    user=request.auth.user
+                )
+
+                note = SurvivorNote.objects.get(
+                    pk=note_pk,
+                    survivor_log=survivor_log
+                )
+
+                text = request.data["text"]
+                if not text:
+                    return Response(
+                        {"message": "Text is required for the note."},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+                
+                note.text = text
+                note.save()
+
+                serializer = SurvivorNoteSerializer(note)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            
+            except SurvivorNote.DoesNotExist:
+                return Response(
+                    {"message": "Note not found"},
+                    status=status.HTTP_404_NOT_FOUND
+                )
+            
+            except Exception as ex:
+                return Response({"reason": str(ex)}, status=status.HTTP_400_BAD_REQUEST)
+
+        elif request.method == 'DELETE':
+            try:
+                survivor_log = SurvivorLog.objects.get(
+                    pk=survivor_log_pk,
+                    season_log=season_log,
+                    user=request.auth.user
+                )
+
+                note = SurvivorNote.objects.get(
+                    pk=note_pk,
+                    survivor_log=survivor_log
+                )
+                note.delete()
+
+                return Response(status=status.HTTP_204_NO_CONTENT)
+            
+            except SurvivorNote.DoesNotExist:
+                return Response(
+                    {"message": "Note not found"},
+                    status=status.HTTP_404_NOT_FOUND
+                )
+            
+            except Exception as ex:
+                return Response({"reason": str(ex)}, status=status.HTTP_400_BAD_REQUEST)

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from survivorapi.views import login_user, register_user, SeasonLogs, Seasons, Tribes, Survivors, SurvivorTribes, SurvivorNotes
+from survivorapi.views import login_user, register_user, SeasonLogs, Seasons, Tribes, Survivors, SurvivorTribes
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r"season-logs", SeasonLogs, "season-log")
