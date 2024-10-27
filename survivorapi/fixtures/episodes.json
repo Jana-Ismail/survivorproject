@@ -1,0 +1,363 @@
+[
+    {
+        "model": "survivorapi.episode",
+        "pk": 1,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 1,
+            "title": "They're Back!",
+            "air_date_time": "2004-02-01T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 2,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 2,
+            "title": "Panicked, Desperate, Thirsty as Hell",
+            "air_date_time": "2004-02-05T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 3,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 3,
+            "title": "Shark Attack!",
+            "air_date_time": "2004-02-12T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 4,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 4,
+            "title": "Wipe Out!",
+            "air_date_time": "2004-02-19T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 5,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 5,
+            "title": "I've Been Bamboozled!",
+            "air_date_time": "2004-02-26T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 6,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 6,
+            "title": "Outraged",
+            "air_date_time": "2004-03-04T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 7,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 7,
+            "title": "Sorry...I Blew It",
+            "air_date_time": "2004-03-11T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 8,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 8,
+            "title": "Pick a Tribemate",
+            "air_date_time": "2004-03-17T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 9,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 9,
+            "title": "A Closer Look",
+            "air_date_time": "2004-03-24T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 10,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 10,
+            "title": "Mad Scramble and Broken Hearts",
+            "air_date_time": "2004-04-01T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 11,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 11,
+            "title": "Anger, Tears, and Chaos",
+            "air_date_time": "2004-04-08T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 12,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 12,
+            "title": "A Thoughtful Gesture or a Deceptive Plan",
+            "air_date_time": "2004-04-15T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 13,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 13,
+            "title": "Stupid People, Stupid, Stupid People",
+            "air_date_time": "2004-04-22T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 14,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 14,
+            "title": "A Chapera Surprise",
+            "air_date_time": "2004-04-29T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 15,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 15,
+            "title": "The Instigator",
+            "air_date_time": "2004-05-06T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 16,
+        "fields": {
+            "season_id": 10,
+            "episode_number": 16,
+            "title": "The Sole Surviving All-Star",
+            "air_date_time": "2004-05-09T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 17,
+        "fields": {
+            "season_id": 1,
+            "episode_number": 1,
+            "title": "One Glorious and Perfect Episode",
+            "air_date_time": "2024-09-18T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 18,
+        "fields": {
+            "season_id": 1,
+            "episode_number": 2,
+            "title": "Epic Boss Girl Move",
+            "air_date_time": "2024-09-25T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 19,
+        "fields": {
+            "season_id": 1,
+            "episode_number": 3,
+            "title": "Belly of the Beast",
+            "air_date_time": "2024-10-02T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 20,
+        "fields": {
+            "season_id": 1,
+            "episode_number": 4,
+            "title": "Is That Blood in Your Hair",
+            "air_date_time": "2024-10-09T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 21,
+        "fields": {
+            "season_id": 1,
+            "episode_number": 5,
+            "title": "The Scales Be Tippin",
+            "air_date_time": "2024-10-16T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 22,
+        "fields": {
+            "season_id": 1,
+            "episode_number": 6,
+            "title": "Feel the FOMO",
+            "air_date_time": "2024-10-23T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 23,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 1,
+            "title": "Greatest of the Greats",
+            "air_date_time": "2020-02-12T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 24,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 2,
+            "title": "It's Like a Survivor Economy",
+            "air_date_time": "2020-02-19T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 25,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 3,
+            "title": "Out for Blood",
+            "air_date_time": "2020-02-26T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 26,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 4,
+            "title": "I Like Revenge",
+            "air_date_time": "2020-03-04T20:00:00-05:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 27,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 5,
+            "title": "The Buddy System on Steroids",
+            "air_date_time": "2020-03-11T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 28,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 6,
+            "title": "Quick on the Draw",
+            "air_date_time": "2020-03-18T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 29,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 7,
+            "title": "We're in the Majors",
+            "air_date_time": "2020-03-25T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 30,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 8,
+            "title": "This Is Where the Battle Begins",
+            "air_date_time": "2020-04-01T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 31,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 9,
+            "title": "War Is Not Pretty",
+            "air_date_time": "2020-04-08T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 32,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 10,
+            "title": "The Full Circle",
+            "air_date_time": "2020-04-15T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 33,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 11,
+            "title": "This Is Extortion",
+            "air_date_time": "2020-04-22T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 34,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 12,
+            "title": "Friendly Fire",
+            "air_date_time": "2020-04-29T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 35,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 13,
+            "title": "The Penultimate Step of the War",
+            "air_date_time": "2020-05-06T20:00:00-04:00"
+        }
+    },
+    {
+        "model": "survivorapi.episode",
+        "pk": 36,
+        "fields": {
+            "season_id": 2,
+            "episode_number": 14,
+            "title": "It All Boils Down to This",
+            "air_date_time": "2020-05-13T20:00:00-04:00"
+        }
+    }
+]
+

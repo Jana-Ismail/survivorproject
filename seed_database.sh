@@ -13,3 +13,4 @@ python3 manage.py loaddata tribes
 python3 manage.py loaddata survivor_tribes
 python3 manage.py loaddata season_logs
 python3 manage.py loaddata survivor_logs
+python3 manage.py loaddata episodes
