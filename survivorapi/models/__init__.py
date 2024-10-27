@@ -6,3 +6,5 @@ from .survivor_tribe import SurvivorTribe
 from .survivor import Survivor
 from .tribe import Tribe
 from .season_log import SeasonLog
+from .episode import Episode
+from .episode_log import EpisodeLog

@@ -11,7 +11,7 @@ class SeasonSerializer(serializers.ModelSerializer):
         model = Season
         fields = [
             'id', 'season_number', 'name', 'location',
-            'start_date', 'end_date', 'is_current'
+            'start_date', 'end_date', 'is_current', 'total_episodes'
         ]
 
 class Seasons(viewsets.ModelViewSet):
