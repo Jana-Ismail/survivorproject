@@ -7,3 +7,7 @@ class Season(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=100)
+
+    @property
+    def total_episodes(self):
+        return self.episodes.count()
