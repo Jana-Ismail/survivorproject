@@ -4,4 +4,3 @@ from .seasons import Seasons
 from .tribes import Tribes
 from .survivors import Survivors
 from .survivor_tribes import SurvivorTribes
-from .survivor_notes import SurvivorNotes
