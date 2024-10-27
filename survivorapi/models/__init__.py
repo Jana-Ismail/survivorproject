@@ -8,3 +8,8 @@ from .tribe import Tribe
 from .season_log import SeasonLog
 from .episode import Episode
 from .episode_log import EpisodeLog
+from .found_advantage import FoundAdvantage
+from .found_idol import FoundIdol
+from .played_idol import PlayedIdol
+from .won_immunity import WonImmunity
+from .won_reward import WonReward
