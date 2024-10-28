@@ -1,8 +1,8 @@
 from django.db import models
 
 class WonReward(models.Model):
-    episode_log = models.ForeignKey('episode_logs.EpisodeLog', on_delete=models.CASCADE, related_name='won_rewards')
-    survivor_log = models.ForeignKey('survivor_logs.SurvivorLog', on_delete=models.CASCADE, related_name='won_rewards')
+    episode_log = models.ForeignKey('EpisodeLog', on_delete=models.CASCADE, related_name='won_rewards')
+    survivor_log = models.ForeignKey('SurvivorLog', on_delete=models.CASCADE, related_name='won_rewards')
     
     @property
     def points(self):

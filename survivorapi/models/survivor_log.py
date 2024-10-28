@@ -1,9 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from survivorapi.models import (
-    FoundAdvantage, FoundIdol, PlayedIdol,
-    WonImmunity, WonReward,
-    )
 
 class SurvivorLog(models.Model):
     survivor = models.ForeignKey("Survivor", on_delete=models.CASCADE)
@@ -30,7 +26,12 @@ class SurvivorLog(models.Model):
                 - won_individual_immunities: Points and count for individual immunity wins
                 - won_rewards: Points and count for reward wins
         """
-
+        from .found_advantage import FoundAdvantage
+        from .found_idol import FoundIdol
+        from .played_idol import PlayedIdol
+        from .won_immunity import WonImmunity
+        from .won_reward import WonReward
+        
         advantage_stats = FoundAdvantage.get_stats_for_survivor(self.id)
         idol_stats = FoundIdol.get_stats_for_survivor(self.id)
         played_idol_stats = PlayedIdol.get_stats_for_survivor(self.id)
