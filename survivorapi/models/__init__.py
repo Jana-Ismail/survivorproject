@@ -13,3 +13,12 @@ from .found_idol import FoundIdol
 from .played_idol import PlayedIdol
 from .won_immunity import WonImmunity
 from .won_reward import WonReward
+
+__all__ = [
+    'FoundAdvantage',
+    'FoundIdol',
+    'PlayedIdol',
+    'WonImmunity',
+    'WonReward',
+    'SurvivorLog'
+]

@@ -372,3 +372,7 @@ class SeasonLogs(viewsets.ModelViewSet):
             
             except Exception as ex:
                 return Response({"reason": str(ex)}, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['get', 'post'], url_path="/episodes/(?P<episode_log_id>[^/.]+)")
+    def episode_logs(self, request, pk=None, episode_log_id=None):
+        pass
