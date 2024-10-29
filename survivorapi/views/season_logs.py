@@ -64,12 +64,19 @@ class SeasonLogs(viewsets.ModelViewSet):
         user = request.auth.user
 
         # Filter season logs by status directly from the database
-        active_seasons = SeasonLog.objects.filter(user=user, status="active")
-        completed_seasons = SeasonLog.objects.filter(user=user, status="complete")
+        active_seasons = SeasonLog.objects.filter(
+            user=user, status="active"
+        ).order_by('created_on')
+
+        completed_seasons = SeasonLog.objects.filter(
+            user=user, status="complete"
+        ).order_by('completed_on')
         
         # Get all seasons and exclude the ones that already have a season log for the user
         logged_seasons = SeasonLog.objects.filter(user=user).values_list('season_id', flat=True)
-        inactive_seasons = Season.objects.exclude(id__in=logged_seasons)
+        inactive_seasons = Season.objects.exclude(
+            id__in=logged_seasons
+        ).order_by('season_number')
 
         serialized_active_seasons = SeasonLogSerializer(active_seasons, many=True).data
         serialized_completed_seasons = SeasonLogSerializer(completed_seasons, many=True).data
