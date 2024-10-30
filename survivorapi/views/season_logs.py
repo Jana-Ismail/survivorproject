@@ -98,7 +98,7 @@ class WonRewardSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = WonReward
-        fields = ['id', 'survivor_log', 'is_individual']
+        fields = ['id', 'survivor_log']
 
 class EpisodeLogSerializer(serializers.ModelSerializer):
     episode = EpisodeSerializer(many=False)
@@ -380,9 +380,34 @@ class SeasonLogs(viewsets.ModelViewSet):
                 {"message": "Survivor log not found"}, 
                 status=status.HTTP_404_NOT_FOUND
             )
-    @action(detail=True, methods=['post'], url_path="episodes")
+    
+    @action(detail=True, methods=['get', 'post'], url_path="episodes")
     def episode_logs(self, request, pk=None):
         season_log = self.get_object()
+
+        if request.method == 'GET':
+            # Get all episode logs for the season
+            episode_logs = EpisodeLog.objects.filter(
+                season_log=season_log,
+                user=request.auth.user
+            ).order_by('episode__episode_number')
+
+            # Get active survivors for the season
+            active_survivors = SurvivorLog.objects.filter(
+                season_log=season_log,
+                is_active=True
+            )
+
+            # Serialize the data
+            serialized_episode_logs = EpisodeLogSerializer(episode_logs, many=True).data
+            serialized_active_survivors = SurvivorLogSerializer(active_survivors, many=True).data
+
+            response_data = {
+                'episode_logs': serialized_episode_logs,
+                'active_survivors': serialized_active_survivors
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
         
         if request.method == 'POST':
             # Validate the request data
@@ -488,7 +513,6 @@ class SeasonLogs(viewsets.ModelViewSet):
                                 WonReward(
                                     episode_log=episode_log,
                                     survivor_log=survivor_log,
-                                    is_individual=actions.get("is_individual_reward", False)
                                 )
                             )
                         
@@ -540,303 +564,3 @@ class SeasonLogs(viewsets.ModelViewSet):
                     {"message": str(ex)},
                     status=status.HTTP_400_BAD_REQUEST
                 )
-    #     elif request.method == 'POST':
-    #         try:
-    #             # Verify the survivor_log exists and belongs to this season_log
-    #             survivor_log = SurvivorLog.objects.get(
-    #                 pk=survivor_log_pk,
-    #                 season_log=season_log,
-    #                 user=request.auth.user
-    #             )
-
-    #             # Check if text is provided so no resource is created without text data
-    #             text = request.data.get("text")
-    #             if not text:
-    #                 return Response(
-    #                     {"message": "Text is required for the note"},
-    #                     status=status.HTTP_400_BAD_REQUEST
-    #                 )
-                
-    #             note = SurvivorNote.objects.create(
-    #                 survivor_log=survivor_log,
-    #                 text=text
-    #             )
-
-    #             serializer = SurvivorNoteSerializer(note)
-    #             return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #         except Exception as ex:
-    #             return Response({"reason": ex.args[0]}, status=status.HTTP_400_BAD_REQUEST)
-    
-    # @action(detail=True, methods=['put', 'delete'], url_path="survivors/(?P<survivor_log_pk>[^/.]+)/notes/(?P<note_pk>[^/.]+)")
-    # def update_or_delete_note(self, request, pk=None, survivor_log_pk=None, note_pk=None):
-    #     season_log = self.get_object()
-
-    #     if request.method == 'PUT':
-    #         try:
-    #             survivor_log = SurvivorLog.objects.get(
-    #                 pk=survivor_log_pk,
-    #                 season_log=season_log,
-    #                 user=request.auth.user
-    #             )
-
-    #             note = SurvivorNote.objects.get(
-    #                 pk=note_pk,
-    #                 survivor_log=survivor_log
-    #             )
-
-    #             text = request.data["text"]
-    #             if not text:
-    #                 return Response(
-    #                     {"message": "Text is required for the note."},
-    #                     status=status.HTTP_400_BAD_REQUEST
-    #                 )
-                
-    #             note.text = text
-    #             note.save()
-
-    #             serializer = SurvivorNoteSerializer(note)
-    #             return Response(serializer.data, status=status.HTTP_200_OK)
-            
-    #         except SurvivorNote.DoesNotExist:
-    #             return Response(
-    #                 {"message": "Note not found"},
-    #                 status=status.HTTP_404_NOT_FOUND
-    #             )
-            
-    #         except Exception as ex:
-    #             return Response({"reason": str(ex)}, status=status.HTTP_400_BAD_REQUEST)
-
-    #     elif request.method == 'DELETE':
-    #         try:
-    #             survivor_log = SurvivorLog.objects.get(
-    #                 pk=survivor_log_pk,
-    #                 season_log=season_log,
-    #                 user=request.auth.user
-    #             )
-
-    #             note = SurvivorNote.objects.get(
-    #                 pk=note_pk,
-    #                 survivor_log=survivor_log
-    #             )
-    #             note.delete()
-
-    #             return Response(status=status.HTTP_204_NO_CONTENT)
-            
-    #         except SurvivorNote.DoesNotExist:
-    #             return Response(
-    #                 {"message": "Note not found"},
-    #                 status=status.HTTP_404_NOT_FOUND
-    #             )
-            
-    #         except Exception as ex:
-    #             return Response({"reason": str(ex)}, status=status.HTTP_400_BAD_REQUEST)
-
-    # @action(detail=True, methods=['get', 'post'], url_path="episodes")
-    # # @action(detail=True, methods=['get', 'post'], url_path="/episodes/(?P<episode_log_id>[^/.]+)")
-    # def episode_logs(self, request, pk=None):
-    #     season_log = self.get_object()
-
-    #     if request.method == 'GET':
-    #         # Get all episode logs for the season
-    #         episode_logs = EpisodeLog.objects.filter(
-    #             season_log=season_log,
-    #             user=request.auth.user
-    #         ).order_by('episode__episode_number')
-
-    #         # Get active survivors for the season
-    #         active_survivors = SurvivorLog.objects.filter(
-    #             season_log=season_log,
-    #             is_active=True
-    #         )
-
-    #         # Serialize the data
-    #         serialized_episode_logs = EpisodeLogSerializer(episode_logs, many=True).data
-    #         serialized_active_survivors = SurvivorLogSerializer(active_survivors, many=True).data
-
-    #         response_data = {
-    #             'episode_logs': serialized_episode_logs,
-    #             'active_survivors': serialized_active_survivors
-    #         }
-
-    #         return Response(response_data, status=status.HTTP_200_OK)
-        
-    #     elif request.method == 'POST':
-    #         # Validate the request data
-    #         serializer = EpisodeLogCreateSerializer(data=request.data)
-    #         if not serializer.is_valid():
-    #             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-            
-    #         validated_data = serializer.validated_data
-
-    #         try:
-    #             # Get the episode number from request
-    #             # episode_number = request.data.get("episode_number")
-    #             # survivor_logs = request.data.get('survivor_logs', [])
-                
-    #             # Get the episode instance
-    #             episode_number = validated_data['episode_number']
-    #             try:
-    #                 episode = Episode.objects.get(
-    #                     season=season_log.season,
-    #                     episode_number=episode_number
-    #                 )
-
-    #             # except Episode.DoesNotExist:
-    #             #     return Response(
-    #             #         {"message": "Episode not found"},
-    #             #         status=status.HTTP_404_NOT_FOUND
-    #             #     )
-
-    #                 # Check if episode log already exists
-    #                 existing_log = EpisodeLog.objects.filter(
-    #                     user=request.auth.user,
-    #                     episode=episode,
-    #                     season_log=season_log
-    #                 ).first()
-
-    #                 if existing_log:
-    #                     return Response(
-    #                         {"message": "Episode log already exists for this episode"},
-    #                         status=status.HTTP_400_BAD_REQUEST
-    #                     )
-                
-    #                 # Validate survivor_log ids and collect them
-    #                 survivor_logs = validated_data['survivor_logs']
-    #                 survivor_log_ids = [sl['id'] for sl in survivor_logs]
-                
-    #                 valid_survivor_logs = SurvivorLog.objects.filter(
-    #                     id__in=survivor_log_ids,
-    #                     season_log=season_log,
-    #                     is_active=True
-    #                 )
-
-    #                 if len(valid_survivor_logs) != len(survivor_log_ids):
-    #                     return Response(
-    #                         {"message": "One or more invalid or inactive survivor log IDs"},
-    #                         status=status.HTTP_400_BAD_REQUEST
-    #                     )
-                
-    #             # Get active survivors for this season log
-    #             # active_survivors = SurvivorLog.objects.filter(
-    #             #     season_log=season_log,
-    #             #     is_active=True
-    #             # )
-
-    #                 with transaction.atomic():
-    #                     # Create episode log
-    #                     episode_log = EpisodeLog.objects.create(
-    #                         user=request.auth.user,
-    #                         episode=episode,
-    #                         season_log=season_log
-    #                     )
-
-    #                     # Process survivor actions
-    #                     # actions_data = request.data.get("actions", {})
-
-    #                     # Create lists to store bulk create operations
-    #                     found_idols = []
-    #                     found_advantages = []
-    #                     played_idols = []
-    #                     won_immunities = []
-    #                     won_rewards = []
-    #                     voted_out_logs = []
-
-    #                     for survivor_data in survivor_logs:
-    #                         survivor_log = next(
-    #                             sl for sl in valid_survivor_logs if sl.id == survivor_data['id']
-    #                         )
-    #                         actions = survivor_data['episode_actions']
-
-    #                         if actions.get("found_idol"):
-    #                             found_idols.append(
-    #                                 FoundIdol(
-    #                                     episode_log=episode_log,
-    #                                     survivor_log=survivor_log
-    #                                 )
-    #                             )
-                            
-    #                         if actions.get("found_advantage"):
-    #                             found_advantages.append(
-    #                                 FoundAdvantage(
-    #                                     episode_log=episode_log,
-    #                                     survivor_log=survivor_log
-    #                                 )
-    #                             )
-                            
-    #                         if actions.get("played_idol"):
-    #                             played_idols.append(
-    #                                 PlayedIdol(
-    #                                     episode_log=episode_log,
-    #                                     survivor_log=survivor_log
-    #                                 )
-    #                             )
-                            
-    #                         if actions.get("won_immunity"):
-    #                             won_immunities.append(
-    #                                 WonImmunity(
-    #                                     episode_log=episode_log,
-    #                                     survivor_log=survivor_log,
-    #                                     is_individual=survivor_actions.get("is_individual_immunity", False)
-    #                                 )
-    #                             )
-                            
-    #                         if actions.get("won_reward"):
-    #                             won_rewards.append(
-    #                                 episode_log=episode_log,
-    #                                 survivor_log=survivor_log
-    #                             )
-                        
-    #                         # Update survivor status if voted out
-    #                         if actions.get("voted_out"):
-    #                             survivor_log.is_active = False
-    #                             survivor_log.episode_voted_out = episode
-    #                             survivor_log.save()
-                    
-    #                     # Bulk create all action records
-    #                     if found_idols:
-    #                         FoundIdol.objects.bulk_create(found_idols)
-    #                     if found_advantages:
-    #                         FoundAdvantage.objects.bulk_create(found_advantages)
-    #                     if played_idols:
-    #                         PlayedIdol.objects.bulk_create(played_idols)
-    #                     if won_immunities:
-    #                         WonImmunity.objects.bulk_create(won_rewards)
-
-    #                     # Bulk update voted out survivors
-    #                     if voted_out_logs:
-    #                         SurvivorLog.objects.bulk_update(
-    #                             voted_out_logs,
-    #                             ['is_active', 'episode_voted_out']
-    #                         )
-    #                     # Refresh episode log from database to get related data
-    #                     episode_log.refresh_from_db()
-
-    #                     # Get updated active survivors
-    #                     active_survivors = SurvivorLog.objects.filter(
-    #                         season_log=season_log,
-    #                         is_active=True
-    #                     )
-
-    #                     # Serialize the data
-    #                     serialized_episode_log = EpisodeLogSerializer(episode_log).data,
-    #                     serialized_active_survivors = SurvivorLogSerializer(active_survivors, many=True)
-
-    #                     response_data = {
-    #                         'episode_log': serialized_episode_log,
-    #                         'active_survivors': serialized_active_survivors
-    #                     }
-
-    #                     return Response(response_data, status=status.HTTP_201_CREATED)
-            
-    #             except Episode.DoesNotExist:
-    #                 return Response(
-    #                     {"message": "Episode not found"},
-    #                     status=status.HTTP_404_NOT_FOUND
-    #                 )
-            
-    #         except Exception as ex:
-    #             return Response(
-    #                 {"message": str(ex)},
-    #                 status=status.HTTP_400_BAD_REQUEST
-    #             )
-
