@@ -5,7 +5,21 @@ from rest_framework.decorators import action
 from rest_framework import serializers
 from rest_framework import status
 from django.db import transaction
-from survivorapi.models import SeasonLog, Season, Survivor, SurvivorLog, FavoriteSurvivor, SurvivorNote
+from survivorapi.models import (
+    SeasonLog, 
+    Season, 
+    Survivor, 
+    SurvivorLog, 
+    FavoriteSurvivor, 
+    SurvivorNote, 
+    EpisodeLog, 
+    Episode,
+    FoundAdvantage,
+    FoundIdol,
+    WonImmunity,
+    WonReward,
+    PlayedIdol
+)
 
 class SeasonSerializer(serializers.ModelSerializer):
     class Meta:
@@ -45,6 +59,78 @@ class SurvivorNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = SurvivorNote
         fields = ['id', 'text']
+
+# Episode Log serializers
+class SurvivorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Survivor
+        fields = ['id', 'first_name', 'last_name', 'age', 'img_url']
+
+class SurvivorLogSerializer(serializers.ModelSerializer):
+    survivor = SurvivorSerializer(many=False)
+    
+    class Meta:
+        model = SurvivorLog
+        fields = ['id', 'survivor', 'is_active', 'is_juror', 'episode_voted_out', 'is_user_winner_pick']
+
+class EpisodeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Episode
+        fields = ['id', 'episode_number', 'air_date_time', 'title']
+
+class FoundIdolSerializer(serializers.ModelSerializer):
+    survivor_log = SurvivorLogSerializer(many=False)
+    
+    class Meta:
+        model = FoundIdol
+        fields = ['id', 'survivor_log']
+
+class FoundAdvantageSerializer(serializers.ModelSerializer):
+    survivor_log = SurvivorLogSerializer(many=False)
+    
+    class Meta:
+        model = FoundAdvantage
+        fields = ['id', 'survivor_log']
+
+class PlayedIdolSerializer(serializers.ModelSerializer):
+    survivor_log = SurvivorLogSerializer(many=False)
+    
+    class Meta:
+        model = PlayedIdol
+        fields = ['id', 'survivor_log']
+
+class WonImmunitySerializer(serializers.ModelSerializer):
+    survivor_log = SurvivorLogSerializer(many=False)
+    
+    class Meta:
+        model = WonImmunity
+        fields = ['id', 'survivor_log', 'is_individual']
+
+class WonRewardSerializer(serializers.ModelSerializer):
+    survivor_log = SurvivorLogSerializer(many=False)
+    
+    class Meta:
+        model = WonReward
+        fields = ['id', 'survivor_log', 'is_individual']
+
+class EpisodeLogSerializer(serializers.ModelSerializer):
+    episode = EpisodeSerializer(many=False)
+    found_idols = FoundIdolSerializer(many=True, read_only=True)
+    found_advantages = FoundAdvantageSerializer(many=True, read_only=True)
+    played_idols = PlayedIdolSerializer(many=True, read_only=True)
+    won_immunities = WonImmunitySerializer(many=True, read_only=True)
+    won_rewards = WonRewardSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = EpisodeLog
+        fields = ['id', 'episode', 'created_at', 'found_idols', 
+                 'found_advantages', 'played_idols', 'won_immunities', 
+                 'won_rewards']
+
+class EpisodeLogCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EpisodeLog
+        fields = ['episode']
 
 class SeasonLogs(viewsets.ModelViewSet):
     """
@@ -380,6 +466,31 @@ class SeasonLogs(viewsets.ModelViewSet):
             except Exception as ex:
                 return Response({"reason": str(ex)}, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=True, methods=['get', 'post'], url_path="/episodes/(?P<episode_log_id>[^/.]+)")
-    def episode_logs(self, request, pk=None, episode_log_id=None):
-        pass
+    @action(detail=True, methods=['get', 'post'], url_path="episodes")
+    # @action(detail=True, methods=['get', 'post'], url_path="/episodes/(?P<episode_log_id>[^/.]+)")
+    def episode_logs(self, request, pk=None):
+        season_log = self.get_object()
+
+        if request.method == 'GET':
+            # Get all episode logs for the season
+            episode_logs = EpisodeLog.objects.filter(
+                season_log=season_log,
+                user=request.auth.user
+            ).order_by('episode__episode_number')
+
+            # Get active survivors for the season
+            active_survivors = SurvivorLog.objects.filter(
+                season_log=season_log,
+                is_active=True
+            )
+
+            # Serialize the data
+            serialized_episode_logs = EpisodeLogSerializer(episode_logs, many=True).data
+            serialized_active_survivors = SurvivorLogSerializer(active_survivors, many=True).data
+
+            response_data = {
+                'episode_logs': serialized_episode_logs,
+                'active_survivors': serialized_active_survivors
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
