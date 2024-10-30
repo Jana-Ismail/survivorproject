@@ -4,20 +4,6 @@
         "pk": 1,
         "fields": {
             "user_id": 6,
-            "survivor_id": 1,
-            "season_log_id": 1,
-            "is_active": true,
-            "is_juror": false,
-            "episode_voted_out": null,
-            "is_user_winner_pick": false,
-            "is_season_winner": false
-        }
-    },
-    {
-        "model": "survivorapi.survivorlog",
-        "pk": 2,
-        "fields": {
-            "user_id": 6,
             "survivor_id": 2,
             "season_log_id": 1,
             "is_active": true,
@@ -27,6 +13,20 @@
             "is_season_winner": false
         }
     },
+        {
+            "model": "survivorapi.survivorlog",
+            "pk": 2,
+            "fields": {
+                "user_id": 6,
+                "survivor_id": 1,
+                "season_log_id": 1,
+                "is_active": true,
+                "is_juror": false,
+                "episode_voted_out": null,
+                "is_user_winner_pick": false,
+                "is_season_winner": false
+            }
+        },
     {
         "model": "survivorapi.survivorlog",
         "pk": 3,
