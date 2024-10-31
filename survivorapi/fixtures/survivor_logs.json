@@ -23,7 +23,7 @@
                 "is_active": true,
                 "is_juror": false,
                 "episode_voted_out": null,
-                "is_user_winner_pick": false,
+                "is_user_winner_pick": true,
                 "is_season_winner": false
             }
         },
