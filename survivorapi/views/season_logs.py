@@ -282,6 +282,64 @@ class SeasonLogs(viewsets.ModelViewSet):
         elif request.method == 'PUT':
             pass
 
+    @action(detail=True, methods=['get', 'put'], url_path='survivors/winner-pick')
+    def favorite_to_win(self, request, pk=None):
+        """Handle winner selection for a season log"""
+        season_log = self.get_object()
+
+        if request.method == 'GET':
+            winner_pick = SurvivorLog.objects.get(
+                season_log=season_log,
+                user=request.auth.user,
+                is_user_winner_pick=True
+            )
+            serializer = SurvivorLogSerializer(winner_pick, many=False)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        if request.method == 'PUT':
+            survivor_log_id = request.data.get("survivor_log_id")
+            
+            if not survivor_log_id:
+                return Response(
+                    {"message": "survivor_log_id is required"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
+            try:
+                # Verify the survivor_log exists and belongs to this season_log
+                survivor_log = SurvivorLog.objects.get(
+                    pk=survivor_log_id,
+                    season_log=season_log,
+                    user=request.auth.user
+                )
+
+                # Check to see if there is already a winner pick for the season log
+                existing_winner_pick = SurvivorLog.objects.filter(
+                    season_log=season_log,
+                    is_user_winner_pick=True
+                ).first()
+
+                if existing_winner_pick:
+                    existing_winner_pick.is_user_winner_pick = False
+                    existing_winner_pick.save()
+                
+                survivor_log.is_user_winner_pick = True
+                survivor_log.save()
+
+                serializer = SurvivorLogSerializer(survivor_log, many=False)
+                return Response(serializer.data, status=status.HTTP_200_OK)   
+                       
+            except SurvivorLog.DoesNotExist:
+                return Response(
+                    {"message": "Invalid survivor_log_id"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
+            except Exception as ex:
+                return Response(
+                    {"reason": ex.args[0]}, 
+                    status=status.HTTP_400_BAD_REQUEST
+                )
     @action(detail=True, methods=['get', 'post'], url_path='survivors/favorites')
     def favorite_survivors(self, request, pk=None, favorite_pk=None):
         """
