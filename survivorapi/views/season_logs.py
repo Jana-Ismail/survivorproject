@@ -53,7 +53,7 @@ class FavoriteSurvivorSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = FavoriteSurvivor
-        fields = ['id']
+        fields = ['id', 'survivor_log']
 
 class SurvivorNoteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -288,14 +288,17 @@ class SeasonLogs(viewsets.ModelViewSet):
         season_log = self.get_object()
 
         if request.method == 'GET':
-            winner_pick = SurvivorLog.objects.get(
-                season_log=season_log,
-                user=request.auth.user,
-                is_user_winner_pick=True
-            )
-            serializer = SurvivorLogSerializer(winner_pick, many=False)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        
+            try:
+                winner_pick = SurvivorLog.objects.get(
+                    season_log=season_log,
+                    user=request.auth.user,
+                    is_user_winner_pick=True
+                )
+                serializer = SurvivorLogSerializer(winner_pick, many=False)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            except SurvivorLog.DoesNotExist:
+                # Return null when no winner is picked yet
+                return Response("", status=status.HTTP_200_OK)
         if request.method == 'PUT':
             survivor_log_id = request.data.get("survivor_log_id")
             
@@ -340,6 +343,7 @@ class SeasonLogs(viewsets.ModelViewSet):
                     {"reason": ex.args[0]}, 
                     status=status.HTTP_400_BAD_REQUEST
                 )
+            
     @action(detail=True, methods=['get', 'post'], url_path='survivors/favorites')
     def favorite_survivors(self, request, pk=None, favorite_pk=None):
         """
