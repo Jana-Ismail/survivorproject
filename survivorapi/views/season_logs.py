@@ -22,11 +22,14 @@ from survivorapi.models import (
 )
 
 class SeasonSerializer(serializers.ModelSerializer):
+    total_episodes = serializers.IntegerField(read_only=True)
+    
     class Meta:
         model = Season
         fields = [
             'id', 'season_number', 'name', 'location',
-            'start_date', 'end_date', 'is_current'
+            'start_date', 'end_date', 'is_current',
+            'total_episodes'
         ]
 
 class SeasonLogSerializer(serializers.ModelSerializer):
@@ -46,7 +49,11 @@ class SurvivorLogSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SurvivorLog
-        fields = ['id', 'survivor', 'is_active', 'is_juror', 'episode_voted_out', 'is_user_winner_pick', 'is_season_winner']
+        fields = [
+            'id', 'survivor', 'is_active', 
+            'is_juror', 'episode_voted_out', 
+            'is_user_winner_pick', 'is_season_winner'
+        ]
 
 class FavoriteSurvivorSerializer(serializers.ModelSerializer):
     survivor_log = SurvivorLogSerializer(many=False)
@@ -107,12 +114,22 @@ class EpisodeLogSerializer(serializers.ModelSerializer):
     played_idols = PlayedIdolSerializer(many=True, read_only=True)
     won_immunities = WonImmunitySerializer(many=True, read_only=True)
     won_rewards = WonRewardSerializer(many=True, read_only=True)
+    next_episode = serializers.SerializerMethodField()
     
     class Meta:
         model = EpisodeLog
         fields = ['id', 'episode', 'created_at', 'found_idols', 
                  'found_advantages', 'played_idols', 'won_immunities', 
-                 'won_rewards']
+                 'won_rewards', 'next_episode']
+    
+    def get_next_episode(self, obj):
+        """Calculate the next episode number, considering season total"""
+        current_episode = obj.episode.episode_number
+        total_episodes = obj.episode.season.total_episodes
+
+        if current_episode < total_episodes:
+            return current_episode + 1
+        return None
 
 class EpisodeActionsSerializer(serializers.Serializer):
     """Serializer for actions taken by a survivor in an episode"""
@@ -524,6 +541,7 @@ class SeasonLogs(viewsets.ModelViewSet):
             
             except Exception as ex:
                 return Response({"reason": str(ex)}, status=status.HTTP_400_BAD_REQUEST)
+    
     @action(detail=True, methods=['get', 'post'], url_path="episodes")
     def episode_logs(self, request, pk=None):
         season_log = self.get_object()
@@ -538,8 +556,14 @@ class SeasonLogs(viewsets.ModelViewSet):
             # Get active survivors for the season
             active_survivors = SurvivorLog.objects.filter(
                 season_log=season_log,
-                is_active=True
+                is_active=True,
+                episode_voted_out__isnull=True
             )
+
+            # Calculate next episode number
+            total_episodes = season_log.season.total_episodes
+            current_episode_count = episode_logs.count()
+            next_episode = None if current_episode_count >= total_episodes else current_episode_count + 1
 
             # Serialize the data
             serialized_episode_logs = EpisodeLogSerializer(episode_logs, many=True).data
@@ -547,7 +571,9 @@ class SeasonLogs(viewsets.ModelViewSet):
 
             response_data = {
                 'episode_logs': serialized_episode_logs,
-                'active_survivors': serialized_active_survivors
+                'active_survivors': serialized_active_survivors,
+                'next_episode': next_episode,
+                'total_episodes': total_episodes
             }
 
             return Response(response_data, status=status.HTTP_200_OK)
@@ -562,9 +588,18 @@ class SeasonLogs(viewsets.ModelViewSet):
             
             try:
                 # Get the episode instance
+                episode_number = validated_data['episode_number']
+
+                # Add validation for episode number
+                if episode_number > season_log.season.total_episodes:
+                    return Response(
+                        {"message": f"Episode number cannot exceed season total of {season_log.season.total_episodes}"},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+                
                 episode = Episode.objects.get(
                     season=season_log.season,
-                    episode_number=validated_data['episode_number']
+                    episode_number=episode_number
                 )
                 
                 # Check if episode log already exists
@@ -661,7 +696,7 @@ class SeasonLogs(viewsets.ModelViewSet):
                         
                         if actions.get("voted_out"):
                             survivor_log.is_active = False
-                            survivor_log.episode_voted_out = episode.id
+                            survivor_log.episode_voted_out = episode.episode_number
                             voted_out_logs.append(survivor_log)
 
                     # Bulk create all action records
