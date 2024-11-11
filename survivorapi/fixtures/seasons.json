@@ -214,5 +214,353 @@
             "end_date": "2024-05-22",
             "location": "Fiji"
         }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 19,
+        "fields": {
+            "season_number": 11,
+            "name": "Guatemala",
+            "is_current": false,
+            "start_date": "2005-09-15",
+            "end_date": "2005-12-11",
+            "location": "Guatemala"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 20,
+        "fields": {
+            "season_number": 12,
+            "name": "Panama",
+            "is_current": false,
+            "start_date": "2006-02-02",
+            "end_date": "2006-05-14",
+            "location": "Panama"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 21,
+        "fields": {
+            "season_number": 13,
+            "name": "Cook Islands",
+            "is_current": false,
+            "start_date": "2006-09-14",
+            "end_date": "2006-12-17",
+            "location": "Cook Islands"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 22,
+        "fields": {
+            "season_number": 14,
+            "name": "Fiji",
+            "is_current": false,
+            "start_date": "2007-02-08",
+            "end_date": "2007-05-13",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 23,
+        "fields": {
+            "season_number": 15,
+            "name": "China",
+            "is_current": false,
+            "start_date": "2007-09-20",
+            "end_date": "2007-12-16",
+            "location": "China"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 24,
+        "fields": {
+            "season_number": 16,
+            "name": "Micronesia",
+            "is_current": false,
+            "start_date": "2008-02-07",
+            "end_date": "2008-05-11",
+            "location": "Micronesia"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 25,
+        "fields": {
+            "season_number": 17,
+            "name": "Gabon",
+            "is_current": false,
+            "start_date": "2008-09-25",
+            "end_date": "2008-12-14",
+            "location": "Gabon"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 26,
+        "fields": {
+            "season_number": 18,
+            "name": "Tocantins",
+            "is_current": false,
+            "start_date": "2009-02-12",
+            "end_date": "2009-05-17",
+            "location": "Brazil"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 27,
+        "fields": {
+            "season_number": 19,
+            "name": "Samoa",
+            "is_current": false,
+            "start_date": "2009-09-17",
+            "end_date": "2009-12-20",
+            "location": "Samoa"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 28,
+        "fields": {
+            "season_number": 20,
+            "name": "Heroes vs. Villains",
+            "is_current": false,
+            "start_date": "2010-02-11",
+            "end_date": "2010-05-16",
+            "location": "Samoa"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 29,
+        "fields": {
+            "season_number": 21,
+            "name": "Nicaragua",
+            "is_current": false,
+            "start_date": "2010-09-15",
+            "end_date": "2010-12-19",
+            "location": "Nicaragua"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 30,
+        "fields": {
+            "season_number": 22,
+            "name": "Redemption Island",
+            "is_current": false,
+            "start_date": "2011-02-16",
+            "end_date": "2011-05-15",
+            "location": "Nicaragua"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 31,
+        "fields": {
+            "season_number": 23,
+            "name": "South Pacific",
+            "is_current": false,
+            "start_date": "2011-09-14",
+            "end_date": "2011-12-18",
+            "location": "Samoa"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 32,
+        "fields": {
+            "season_number": 24,
+            "name": "One World",
+            "is_current": false,
+            "start_date": "2012-02-15",
+            "end_date": "2012-05-13",
+            "location": "Samoa"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 33,
+        "fields": {
+            "season_number": 25,
+            "name": "Philippines",
+            "is_current": false,
+            "start_date": "2012-09-19",
+            "end_date": "2012-12-16",
+            "location": "Philippines"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 34,
+        "fields": {
+            "season_number": 26,
+            "name": "Caramoan",
+            "is_current": false,
+            "start_date": "2013-02-13",
+            "end_date": "2013-05-12",
+            "location": "Philippines"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 35,
+        "fields": {
+            "season_number": 27,
+            "name": "Blood vs. Water",
+            "is_current": false,
+            "start_date": "2013-09-18",
+            "end_date": "2013-12-15",
+            "location": "Philippines"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 36,
+        "fields": {
+            "season_number": 28,
+            "name": "Cagayan",
+            "is_current": false,
+            "start_date": "2014-02-26",
+            "end_date": "2014-05-21",
+            "location": "Philippines"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 37,
+        "fields": {
+            "season_number": 29,
+            "name": "San Juan del Sur",
+            "is_current": false,
+            "start_date": "2014-09-24",
+            "end_date": "2014-12-17",
+            "location": "Nicaragua"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 38,
+        "fields": {
+            "season_number": 30,
+            "name": "Worlds Apart",
+            "is_current": false,
+            "start_date": "2015-02-25",
+            "end_date": "2015-05-20",
+            "location": "Nicaragua"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 39,
+        "fields": {
+            "season_number": 31,
+            "name": "Cambodia",
+            "is_current": false,
+            "start_date": "2015-09-23",
+            "end_date": "2015-12-16",
+            "location": "Cambodia"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 40,
+        "fields": {
+            "season_number": 32,
+            "name": "Kaôh Rōng",
+            "is_current": false,
+            "start_date": "2016-02-17",
+            "end_date": "2016-05-18",
+            "location": "Cambodia"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 41,
+        "fields": {
+            "season_number": 33,
+            "name": "Millennials vs. Gen X",
+            "is_current": false,
+            "start_date": "2016-09-21",
+            "end_date": "2016-12-14",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 42,
+        "fields": {
+            "season_number": 34,
+            "name": "Game Changers",
+            "is_current": false,
+            "start_date": "2017-03-08",
+            "end_date": "2017-05-24",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 43,
+        "fields": {
+            "season_number": 35,
+            "name": "Heroes vs. Healers vs. Hustlers",
+            "is_current": false,
+            "start_date": "2017-09-27",
+            "end_date": "2017-12-20",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 44,
+        "fields": {
+            "season_number": 36,
+            "name": "Ghost Island",
+            "is_current": false,
+            "start_date": "2018-02-28",
+            "end_date": "2018-05-23",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 45,
+        "fields": {
+            "season_number": 37,
+            "name": "David vs. Goliath",
+            "is_current": false,
+            "start_date": "2018-09-26",
+            "end_date": "2018-12-19",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 46,
+        "fields": {
+            "season_number": 38,
+            "name": "Edge of Extinction",
+            "is_current": false,
+            "start_date": "2019-02-20",
+            "end_date": "2019-05-15",
+            "location": "Fiji"
+        }
+    },
+    {
+        "model": "survivorapi.season",
+        "pk": 47,
+        "fields": {
+            "season_number": 39,
+            "name": "Island of the Idols",
+            "is_current": false,
+            "start_date": "2019-09-25",
+            "end_date": "2019-12-18",
+            "location": "Fiji"
+        }
     }
 ]
